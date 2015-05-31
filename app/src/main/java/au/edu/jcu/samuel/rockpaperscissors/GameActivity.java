@@ -19,6 +19,9 @@ public class GameActivity extends ActionBarActivity {
     public TextView winnerText;
     public Button opponentButton;
     public Button playerButton;
+    public Button disableButton;
+    public TextView movesView;
+    public int movesCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class GameActivity extends ActionBarActivity {
         opponentButton = (Button)findViewById(R.id.spockOpponent);
         playerButton = (Button)findViewById(R.id.spockPlayer);
         winnerText = (TextView)findViewById(R.id.winnerView);
+        movesView = (TextView) findViewById(R.id.movesView);
+        movesCounter = 0;
     }
 
 
@@ -53,6 +58,8 @@ public class GameActivity extends ActionBarActivity {
     }
 
     public void gameButtonClicked (View view) {
+        movesCounter += 1;
+        movesView.setText("" + movesCounter);
         playerButton.setBackgroundColor(getResources().getColor(R.color.grey));
         playerButton.setTextColor(getResources().getColor(R.color.black));
         if (gameType == "single_player") {
@@ -125,6 +132,9 @@ public class GameActivity extends ActionBarActivity {
                 Log.v("Paper Player", "Paper button pressed" + aiOpponentChoice());
                 break;
         }
+        if (winnerText.getText() == "You Win!") {
+            playerWins();
+        }
 
 
     }
@@ -163,5 +173,18 @@ public class GameActivity extends ActionBarActivity {
         }
         Log.v("Random number", "Random num = " + test);
         return "Switch did not work.";
+    }
+
+    public void playerWins () {
+        disableButton = (Button) findViewById(R.id.spockPlayer);
+        disableButton.setEnabled(false);
+        disableButton = (Button) findViewById(R.id.lizardPlayer);
+        disableButton.setEnabled(false);
+        disableButton = (Button) findViewById(R.id.rockPlayer);
+        disableButton.setEnabled(false);
+        disableButton = (Button) findViewById(R.id.scissorsPlayer);
+        disableButton.setEnabled(false);
+        disableButton = (Button) findViewById(R.id.paperPlayer);
+        disableButton.setEnabled(false);
     }
 }
