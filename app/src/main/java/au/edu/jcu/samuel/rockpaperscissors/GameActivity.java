@@ -1,6 +1,7 @@
 package au.edu.jcu.samuel.rockpaperscissors;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -186,5 +187,21 @@ public class GameActivity extends ActionBarActivity {
         disableButton.setEnabled(false);
         disableButton = (Button) findViewById(R.id.paperPlayer);
         disableButton.setEnabled(false);
+        Button playAgainButton = (Button)findViewById(R.id.playAgainButton);
+        Button addToHighscoresButton = (Button) findViewById(R.id.addToHighscoresButton);
+        playAgainButton.setVisibility(View.VISIBLE);
+        addToHighscoresButton.setVisibility(View.VISIBLE);
+
+    }
+
+    public void playAgain () {
+        Intent intent = new Intent(this, GameActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    public void addToHighscores () {
+        Intent intent = new Intent(this, AddToHighscores.class);
+        startActivityForResult(intent, 1);
     }
 }
