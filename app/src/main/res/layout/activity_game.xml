@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="au.edu.jcu.samuel.rockpaperscissors.GameActivity"
+    android:background="#ff6df8ff">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spock"
+        android:id="@+id/spockPlayer"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="gameButtonClicked"
+        android:background="#C0C0C0"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rock"
+        android:id="@+id/rockPlayer"
+        android:onClick="gameButtonClicked"
+        android:layout_alignTop="@+id/paperPlayer"
+        android:layout_toStartOf="@+id/paperPlayer"
+        android:background="#C0C0C0"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lizard"
+        android:id="@+id/lizardPlayer"
+        android:onClick="gameButtonClicked"
+        android:layout_below="@+id/rockPlayer"
+        android:layout_toStartOf="@+id/spockPlayer"
+        android:background="#C0C0C0"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scissors"
+        android:id="@+id/scissorsPlayer"
+        android:onClick="gameButtonClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/spockPlayer"
+        android:background="#C0C0C0"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paper"
+        android:id="@+id/paperPlayer"
+        android:onClick="gameButtonClicked"
+        android:layout_marginEnd="40dp"
+        android:layout_above="@+id/spockPlayer"
+        android:layout_alignEnd="@+id/scissorsPlayer"
+        android:background="#C0C0C0"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/winnerView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="50dp"
+        android:textAlignment="center" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lizard"
+            android:id="@+id/lizardOpponent"
+            android:background="#C0C0C0"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/spockOpponent"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="spock"
+            android:id="@+id/spockOpponent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#C0C0C0"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scissors"
+            android:id="@+id/scissorsOpponent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/spockOpponent"
+            android:background="#C0C0C0"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rock"
+            android:id="@+id/rockOpponent"
+            android:background="#C0C0C0"
+            android:layout_below="@+id/lizardOpponent"
+            android:layout_toStartOf="@+id/paperOpponent"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="paper"
+            android:id="@+id/paperOpponent"
+            android:background="#C0C0C0"
+            android:layout_marginEnd="36dp"
+            android:layout_below="@+id/spockOpponent"
+            android:layout_alignEnd="@+id/scissorsOpponent"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
