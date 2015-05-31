@@ -28,6 +28,10 @@
             android:name=".AddToHighscores"
             android:label="@string/title_activity_add_to_highscores" >
         </activity>
+        <activity
+            android:name=".HighscoresActivity"
+            android:label="@string/title_activity_highscores" >
+        </activity>
     </application>
 
 </manifest>

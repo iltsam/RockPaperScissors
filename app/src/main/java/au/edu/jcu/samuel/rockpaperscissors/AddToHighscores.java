@@ -1,5 +1,6 @@
 package au.edu.jcu.samuel.rockpaperscissors;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -19,7 +20,6 @@ public class AddToHighscores extends ActionBarActivity {
     public TextView movesView;
     public EditText playerName;
     public Button addButton;
-    private ArrayAdapter<Player> players;
     private PlayersOpenHelper playersOpenHelper;
 
     @Override
@@ -73,5 +73,8 @@ public class AddToHighscores extends ActionBarActivity {
             Log.v("DataBase", String.format("Name: %s moves: %d", n, m));
         }
         db.close();
+
+        Intent intent = new Intent(this, HighscoresActivity.class);
+        startActivityForResult(intent, 1);
     }
 }
