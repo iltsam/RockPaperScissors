@@ -4,14 +4,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class AddToHighscores extends ActionBarActivity {
+    public int playerMoves;
+    public TextView movesView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_highscores);
+        playerMoves = getIntent().getIntExtra("playerMoves", 0);
+        movesView = (TextView)findViewById(R.id.movesView);
+        movesView.setText("" + playerMoves);
     }
 
 

@@ -171,6 +171,7 @@
             android:id="@+id/addToHighscoresButton"
             android:layout_alignTop="@+id/playAgainButton"
             android:layout_alignEnd="@+id/scissorsOpponent"
+            android:onClick="addToHighscores"
             android:visibility="invisible" />
 
     </RelativeLayout>

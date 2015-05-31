@@ -199,8 +199,10 @@ public class GameActivity extends ActionBarActivity {
         recreate();
     }
 
-    public void addToHighscores () {
+    public void addToHighscores (View view) {
+        // Start new add to highscores activity
         Intent intent = new Intent(this, AddToHighscores.class);
+        intent.putExtra("playerMoves", movesCounter);
         startActivityForResult(intent, 1);
     }
 }
