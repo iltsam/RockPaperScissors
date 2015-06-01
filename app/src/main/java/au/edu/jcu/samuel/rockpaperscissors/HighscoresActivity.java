@@ -1,8 +1,11 @@
 package au.edu.jcu.samuel.rockpaperscissors;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,9 +24,22 @@ public class HighscoresActivity extends ActionBarActivity {
         setContentView(R.layout.activity_highscores);
         highscoreListView = (ListView) findViewById(R.id.highscoresList);
         playersOpenHelper = new PlayersOpenHelper(this);
+        // Opens the database
+        SQLiteDatabase db = playersOpenHelper.getReadableDatabase();
 
         // Creates the controller for the listView
-        players = new ArrayAdapter<Player>(this, // Need to find out the deefault listView...);
+        players = new ArrayAdapter<Player>(this, R.layout.custom_textview);
+        highscoreListView.setAdapter(players);
+
+        Cursor cursor = db.query(true, "Players", null, null, null, null, null,
+                "moves ASC", null);
+        while(cursor.moveToNext()){ 		// Iterates over every value returned from the query
+            String n = cursor.getString(0);
+            int m = cursor.getInt(1);
+            Log.v("DataBase", String.format("Name: %s moves: %d", n, m));
+            players.add(new Player(n, m));
+        }
+        db.close();
 
     }
 

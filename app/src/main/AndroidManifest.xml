@@ -32,6 +32,18 @@
             android:name=".HighscoresActivity"
             android:label="@string/title_activity_highscores" >
         </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="au.edu.jcu.samuel.rockpaperscissors.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

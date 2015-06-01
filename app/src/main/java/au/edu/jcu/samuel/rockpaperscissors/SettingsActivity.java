@@ -1,26 +1,26 @@
 package au.edu.jcu.samuel.rockpaperscissors;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
+public class SettingsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_settings);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 
@@ -30,29 +30,18 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Log.v("Actionbar ID", "" + item);
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivityForResult(intent, 1);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void playButtonClicked (View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
-    }
+    public void returnHome (View view) {
 
-    public void highscoresButtonClicked (View view) {
-        Intent intent = new Intent(this, HighscoresActivity.class);
-        startActivity(intent);
-    }
 
-    public void aboutButtonClicked (View view) {
-        Intent intent = new Intent(this, HighscoresActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

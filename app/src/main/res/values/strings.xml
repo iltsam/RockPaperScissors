@@ -8,4 +8,6 @@
     <string name="title">Rock Paper Scissors Lizard Spock</string>
     <string name="title_activity_add_to_highscores">AddToHighscores</string>
     <string name="title_activity_highscores">HighscoresActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="aboutText">Rock Paper Scissors Lizard Spock is an extension of the original game. It is played by two people making symbols with their hands. With this take on the game, the player will click a button to select your choice. Once you have chosen, your choice will be compared to your opponents and a result will be displayed. </string>
 </resources>
