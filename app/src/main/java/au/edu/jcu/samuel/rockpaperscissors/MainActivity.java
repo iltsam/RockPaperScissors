@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void aboutButtonClicked (View view) {
-        Intent intent = new Intent(this, HighscoresActivity.class);
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 }

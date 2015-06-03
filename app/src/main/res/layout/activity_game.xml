@@ -73,7 +73,8 @@
         android:layout_alignParentEnd="true"
         android:textSize="50dp"
         android:textAlignment="center"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textColor="@color/yellow" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
