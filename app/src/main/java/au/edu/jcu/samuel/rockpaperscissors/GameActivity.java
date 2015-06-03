@@ -49,6 +49,7 @@ public class GameActivity extends Activity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        // Initiate variables for use
         opponentButton = (Button)findViewById(R.id.spockOpponent);
         playerButton = (Button)findViewById(R.id.spockPlayer);
         winnerText = (TextView)findViewById(R.id.winnerView);
@@ -89,17 +90,22 @@ public class GameActivity extends Activity implements SensorEventListener {
 
     public void gameButtonClicked (View view) {
         movesCounter += 1;
+        // updates the moves counter
         movesView.setText("" + movesCounter);
         playerButton.setBackgroundColor(getResources().getColor(R.color.grey));
         playerButton.setTextColor(getResources().getColor(R.color.black));
+        // Sets the opponent choice when in single_Player mode
         if (gameType == "single_player") {
             oponentChoice = aiOpponentChoice();
         }
+        // Gets the ID of what called the function (Player Buttons)
         switch (view.getId()) {
             case R.id.spockPlayer:
+                // Highlights the chosen button
                 playerButton = (Button) findViewById(R.id.spockPlayer);
                 playerButton.setBackgroundColor(getResources().getColor(R.color.blue));
                 playerButton.setTextColor(getResources().getColor(R.color.white));
+                // Win/Lose if else statement
                 if (oponentChoice == "scissors" || oponentChoice == "rock") {
                     winnerText.setText("You Win!");
                 } else if (oponentChoice == "paper" || oponentChoice == "lizard") {
@@ -169,13 +175,17 @@ public class GameActivity extends Activity implements SensorEventListener {
 
     }
 
+    // Opponent choice for AI
     public String aiOpponentChoice() {
         opponentButton.setTextColor(getResources().getColor(R.color.black));
         opponentButton.setBackgroundColor(getResources().getColor(R.color.grey));
+        // Creates random number from 1-5
         Random rand = new Random();
         int test = (rand.nextInt(5) + 1);
+        // Switch to chose R/P/S/L/S from the random number
         switch (test) {
             case 1:
+                // Sets the opponent choice and returns the button name
                 opponentButton = (Button) findViewById(R.id.spockOpponent);
                 opponentButton.setBackgroundColor(getResources().getColor(R.color.blue));
                 opponentButton.setTextColor(getResources().getColor(R.color.white));
@@ -205,6 +215,7 @@ public class GameActivity extends Activity implements SensorEventListener {
         return "Switch did not work.";
     }
 
+    // Disables all the player buttons
     public void playerWins () {
         disableButton = (Button) findViewById(R.id.spockPlayer);
         disableButton.setEnabled(false);
@@ -216,6 +227,7 @@ public class GameActivity extends Activity implements SensorEventListener {
         disableButton.setEnabled(false);
         disableButton = (Button) findViewById(R.id.paperPlayer);
         disableButton.setEnabled(false);
+        // Unhides Player Win Buttons
         Button playAgainButton = (Button)findViewById(R.id.playAgainButton);
         Button addToHighscoresButton = (Button) findViewById(R.id.addToHighscoresButton);
         playAgainButton.setVisibility(View.VISIBLE);
@@ -267,7 +279,7 @@ public class GameActivity extends Activity implements SensorEventListener {
 
     }
 
-    // Used to register the sensor after 5 seconds - This is to prevent shaking and triggering the sensor call 10100010 times
+    // Used to register the sensor after 2 seconds - This is to prevent shaking and triggering the sensor call 10100010 times
     public void registerSensor() {
         if (winnerText.getText() != "You Win!") {
             Runnable task = new Runnable() {
@@ -288,6 +300,8 @@ public class GameActivity extends Activity implements SensorEventListener {
         Log.v("SensorData", "onAccuracyChanged...");
     }
 
+
+    // Chooses a random button for user using sensor data
     public void sensorControler() {
         Random rand = new Random();
         int test = (rand.nextInt(5) + 1);
@@ -313,6 +327,7 @@ public class GameActivity extends Activity implements SensorEventListener {
     public void addToHighscores (View view) {
         // Start new add to highscores activity
         Intent intent = new Intent(this, AddToHighscores.class);
+        // passes playerMoves var to new intent
         intent.putExtra("playerMoves", movesCounter);
         startActivityForResult(intent, 1);
     }
